@@ -17,17 +17,12 @@ app.use(express.json());
 
 /************** CORS SETUP ***************/
 app.use((req, res, next) => {
-  const corsWhitelist = [
-    "https://voucherify.netlify.app/",
-    "http://localhost:3000",
-  ];
-  if (corsWhitelist.indexOf(req.headers.origin) !== -1) {
-    res.header("Access-Control-Allow-Origin", req.headers.origin);
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-  }
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
   next();
 });
